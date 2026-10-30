@@ -1,0 +1,92 @@
+import { ToolItem } from '../types';
+
+export const TOOLS_DATA: ToolItem[] = [
+  {
+    name: 'Midjourney v6.1',
+    category: 'Image Gen',
+    costTier: 'Berbayar Efisien',
+    recommendedModel: 'v6.1 (--v 6.1 --style raw)',
+    bestFor: 'Membuat Frame Acuan 100% dan tekstur arsitektur paling tajam dan fotorealistik di dunia.',
+    secretFormula: 'Gunakan `--cref` (Character Reference) dan `--sref` (Style Reference) dikombinasikan dengan `--cw 100` untuk mengunci palet material.',
+    efficiencyHack: 'Gunakan mode Relax (Basic Plan $10/bulan sudah cukup jika kamu merencanakan prompt dengan matang tanpa boros Fast Hours).',
+    aspectRatios: '--ar 9:16 (TikTok/Reels), --ar 16:9 (Landscape YouTube)',
+  },
+  {
+    name: 'Flux.1 [dev / schnell]',
+    category: 'Image Gen',
+    costTier: 'Freemium',
+    recommendedModel: 'Flux.1 Dev (via fal.ai atau Replicate)',
+    bestFor: 'Render teks di dinding, logo toko, dan kepatuhan prompt geometris yang luar biasa presisi.',
+    secretFormula: 'Gunakan seed yang sama dan ubah hanya frasa tahapan (foundation -> framing -> roof -> paint).',
+    efficiencyHack: 'Model Flux.1 Schnell tersedia gratis di beberapa platform untuk preview sketsa sebelum beralih ke Dev untuk final.',
+    aspectRatios: '896x1152 (9:16), 1344x768 (16:9)',
+  },
+  {
+    name: 'Photoroom & Magnific AI',
+    category: 'Consistency & Clean',
+    costTier: 'Freemium',
+    recommendedModel: 'Smart Object Inpaint & Magic Eraser',
+    bestFor: 'Menghapus artefak pekerja cacat, merapikan batas tanah, dan upscaling detail tekstur kayu/beton.',
+    secretFormula: 'Sebelum memasukkan gambar ke generator video, hilangkan objek mengapung atau sisa distorsi dengan Photoroom.',
+    efficiencyHack: 'Versi web gratis Photoroom sudah memiliki magic retouch yang sangat cukup tanpa perlu langganan Pro.',
+    aspectRatios: 'Original Frame Preservation',
+  },
+  {
+    name: 'Kling AI 1.5 Pro',
+    category: 'Video Gen',
+    costTier: 'Freemium',
+    recommendedModel: 'Kling 1.5 Professional Mode (1080p)',
+    bestFor: 'Fitur "Start Frame & End Frame" terbaik di industri saat ini untuk timelapse konstruksi objek masif.',
+    secretFormula: 'Prompt video harus berfokus pada "Motion of building materials & workers" + "Camera completely locked static on heavy tripod".',
+    efficiencyHack: 'Dapatkan 66 credit gratis harian dengan login teratur, cukup untuk merender 1-2 klip tes per hari secara gratis.',
+    aspectRatios: 'Vertical 9:16, Horizontal 16:9',
+  },
+  {
+    name: 'Luma Dream Machine',
+    category: 'Video Gen',
+    costTier: 'Freemium',
+    recommendedModel: 'Ray 2 / Dream Machine v1.5',
+    bestFor: 'Pergerakan pencahayaan matahari (day-to-night lighting transitions) dan awan yang sangat fotogenik.',
+    secretFormula: 'Pilih "Keyframes" mode (Frame A to Frame B). Tambahkan kata kunci "Natural atmospheric cloud shadows, hyperlapse speed".',
+    efficiencyHack: 'Gunakan paket Free 30 generasi per bulan untuk membuat transisi klip tengah.',
+    aspectRatios: 'Auto-adapts to input image ratio',
+  },
+  {
+    name: 'Runway Gen-3 Alpha',
+    category: 'Video Gen',
+    costTier: 'Pro',
+    recommendedModel: 'Gen-3 Alpha Turbo',
+    bestFor: 'Stabilitas pergerakan manusia dan kecepatan render super kilat (Turbo mode).',
+    secretFormula: 'Gunakan prompt struktur: [Camera Movement]: None, Locked Tripod. [Subject]: Fast hyperlapse construction. [Lighting]: Natural.',
+    efficiencyHack: 'Mode Gen-3 Turbo memakan credit 50% lebih hemat dibandingkan model reguler dengan kualitas yang hampir setara.',
+    aspectRatios: '9:16 and 16:9 native support',
+  },
+  {
+    name: 'CapCut Desktop / Mobile Pro',
+    category: 'Post-Production',
+    costTier: 'Freemium',
+    recommendedModel: 'Curve Speed Editor + Optical Flow 60fps',
+    bestFor: 'Menyatukan semua klip, memotong frame glitch, menerapkan sound effect, dan export video 4K.',
+    secretFormula: 'Kombinasikan Speed Curve "Custom" (naik turun tempo) + Deflicker Level 1 + Foley SFX Pack.',
+    efficiencyHack: 'Fitur Speed Curve, Text, dan Sound Effects bawaan 100% GRATIS tanpa perlu watermark.',
+    aspectRatios: '9:16 (1080x1920) / 4K UHD',
+  },
+];
+
+export const TOOL_COMBINATION_RECIPES = [
+  {
+    title: 'Formula Paling Hemat (Budget Rp 0 - Rp 150rb / bulan)',
+    tools: 'Flux.1 Schnell (Gratis) ➔ Photoroom Web (Gratis) ➔ Kling AI Free Daily Credits ➔ CapCut Free',
+    description: 'Cocok untuk pemula yang ingin belajar membuat 2-3 video timelapse berkualitas tinggi per minggu tanpa modal besar.',
+  },
+  {
+    title: 'Formula Standar Agency / Creator FYP (Paling Direkomendasikan)',
+    tools: 'Midjourney Basic ($10) ➔ Kling AI Standard ($10) ➔ CapCut Pro',
+    description: 'Kombinasi paling konsisten dengan biaya terkontrol (~Rp 300rb/bulan) untuk memproduksi 10-15 video viral siap jual atau monetisasi akun.',
+  },
+  {
+    title: 'Formula Studio Visual Arsitektur Ultra-Realistis',
+    tools: 'Midjourney v6.1 Pro ➔ Magnific AI Upscale ➔ Runway Gen-3 Alpha Turbo ➔ Premiere Pro / DaVinci',
+    description: 'Standar industri untuk presentasi developer properti dan portofolio arsitek komersial dengan detail 4K tanpa kompromi.',
+  },
+];

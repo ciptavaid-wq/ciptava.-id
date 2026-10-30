@@ -1,0 +1,6 @@
+{
+  "name": "AI Timelapse Generator Pro",
+  "description": "Ekosistem generator prompt presisi tinggi dan panduan teknis workflow video timelapse AI stabil untuk Kling AI, Luma, Runway, dan Midjourney.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

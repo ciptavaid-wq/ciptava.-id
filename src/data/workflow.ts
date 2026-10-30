@@ -1,0 +1,77 @@
+import { WorkflowStep } from '../types';
+
+export const WORKFLOW_STEPS: WorkflowStep[] = [
+  {
+    stepNumber: '01',
+    title: 'Generate Master Anchor Frame (Tahap 100% / Selesai)',
+    subtitle: 'Kunci acuan desain final dengan Midjourney v6.1 atau Flux.1 [dev]',
+    tools: ['Midjourney v6.1', 'Flux.1 Dev', 'SDXL'],
+    keyActions: [
+      'Gunakan aspek rasio 9:16 untuk format vertikal TikTok/Reels/Shorts, atau 16:9 untuk YouTube.',
+      'Tambahkan parameter `--style raw` pada Midjourney untuk menghindari efek lukisan/kartun AI.',
+      'Kunci sudut kamera pada "Eye-level 3/4 angle view, fixed tripod framing, architectural photography 8k".',
+      'Pilih satu gambar terbaik dan simpan sebagai Foto Acuan 100% (Final Master).',
+    ],
+    proTips: 'Jangan mulai dari tanah kosong (0%) dulu! Mulailah dari hasil akhir (100%), lalu lakukan dekonstruksi mundur (Reverse Engineering) agar proporsi bangunan tidak berubah.',
+    pitfalls: 'Mengubah rasio atau focal length lensa di tengah jalan akan membuat video timelapse bergetar (jittering) dan tampak melompat saat digabung.',
+  },
+  {
+    stepNumber: '02',
+    title: 'Generate Sequential Keyframes (0%, 25%, 50%, 75%)',
+    subtitle: 'Eksekusi prompt bertahap dengan footprint & grid lock yang konsisten',
+    tools: ['Midjourney Seed Lock', 'ControlNet Depth', 'Inpainting (Photoroom / Fooocus)'],
+    keyActions: [
+      'Copy prompt Foto 1 (0%), Foto 2 (25%), Foto 3 (50%), Foto 4 (75%) dari tab generator.',
+      'Sertakan gambar 100% sebagai image prompt reference (Image-to-Image / Style Reference `--sref`).',
+      'Pastikan batas pondasi (survey stakes & string lines) di Foto 1 menempati koordinat piksel yang sama dengan bangunan di Foto 5.',
+      'Lakukan inspeksi visual: tumpuk frame di photo viewer untuk memastikan garis horizon dan sudut perspektif sejajar.',
+    ],
+    proTips: 'Jika menggunakan Photoshop / Photoroom, kamu bisa melakukan overlay layer transparan 50% untuk memeriksa apakah pilar kolom berdiri di titik yang presisi.',
+    pitfalls: 'Menambahkan objek acak baru (seperti pohon besar atau mobil) yang tiba-tiba hilang di frame berikutnya akan merusak ilusi timelapse.',
+  },
+  {
+    stepNumber: '03',
+    title: 'Render Video Klip Menggunakan First Frame & End Frame',
+    subtitle: 'Jembatani perubahan bentuk dengan AI Video Interpolation tingkat lanjut',
+    tools: ['Kling AI 1.5 Pro', 'Luma Dream Machine', 'Runway Gen-3 Alpha', 'Hailuo AI'],
+    keyActions: [
+      'Buka Kling AI atau Luma Dream Machine, pilih mode "Start Frame & End Frame".',
+      'Upload Foto 1 sebagai Start Frame dan Foto 2 sebagai End Frame untuk Klip 1.',
+      'Paste Prompt Klip 1 ke kolom prompt video.',
+      'Set Motion Value ke angka sedang (antara 3 sampai 5). Jangan terlalu tinggi agar objek tidak meleleh (gelatin effect).',
+      'Ulangi untuk Klip 2 (Foto 2 ke 3), Klip 3 (Foto 3 ke 4), dan Klip 4 (Foto 4 ke 5). Total kamu punya 4 klip mentah (sekitar 32-40 detik).',
+    ],
+    proTips: 'Di Kling AI, matikan fitur Camera Movement (Lock Camera). Biarkan AI hanya memproses perubahan material bangunan, bukan pergerakan lensa kamera.',
+    pitfalls: 'Merender satu video panjang 30 detik sekaligus dari teks murni tanpa keyframe tengah akan membuat AI berhalusinasi dan menghasilkan video yang berubah bentuk tak tentu arah.',
+  },
+  {
+    stepNumber: '04',
+    title: 'Editing, Speed Ramping & Seamless Stitching',
+    subtitle: 'Pangkas bagian lambat dan bentuk ritme dinamis di CapCut atau Premiere Pro',
+    tools: ['CapCut Pro / Desktop', 'Adobe Premiere Pro', 'DaVinci Resolve'],
+    keyActions: [
+      'Impor ke-4 klip video ke timeline secara berurutan.',
+      'Potong (Trim) 0.5 detik pertama dan 0.5 detik terakhir dari tiap klip jika terdapat sedikit distorsi AI saat mulai interpolasi.',
+      'Terapkan "Speed Curve" (Ramping Kecepatan): percepat bagian pengerjaan kasar (3x - 5x) dan perlambat (1x) pada detik-detik saat struktur berdiri kokoh.',
+      'Aktifkan fitur "Optical Flow" atau "Smooth Slow Motion" di CapCut agar pergerakan tetap sehalus mentega (60 FPS feel).',
+      'Tambahkan transisi "Hard Cut" atau "Micro Dissolve (2 frame)" antar klip. Jangan gunakan transisi berlebihan seperti spin atau zoom.',
+    ],
+    proTips: 'Timelapse yang viral di TikTok & Reels rata-rata berdurasi 12 - 20 detik total. Jangan biarkan audiens bosan dengan ritme yang monoton datar!',
+    pitfalls: 'Menggunakan transisi flash putih atau glitch neon murahan yang mengalihkan fokus audiens dari keajaiban proses konstruksi.',
+  },
+  {
+    stepNumber: '05',
+    title: 'Sound Design & Finishing Touch (Siap FYP)',
+    subtitle: 'Hidupkan visual dengan audio foley realistis dan grading warna profesional',
+    tools: ['CapCut Audio SFX', 'ElevenLabs Sound Effects', 'DaVinci Resolve'],
+    keyActions: [
+      'Layer 1: Ambient Background (suara angin lembut, burung di kejauhan, suasana siang outdoor).',
+      'Layer 2: Foley Timelapse (ketukan palu cepat, suara sekop pasir, deru mesin molen beton berkecepatan tinggi).',
+      'Layer 3: Whoosh / Swish halus pada tiap pergantian tahapan penting (fondasi selesai, atap terpasang).',
+      'Layer 4: Audio ending (suara saklar lampu klik menyala "Clack" dan chime hangat saat rumah selesai di 100%).',
+      'Color Grading: Tambahkan sedikit kontras dan kurangi saturasi warna kuning/hijau berlebih dari AI untuk tampilan bioskop mewah.',
+    ],
+    proTips: 'Sound design menyumbang 60% persepsi realisme video! Video dengan efek foley konstruksi yang sinkron terbukti mendapatkan retensi tontonan 2.4x lebih tinggi.',
+    pitfalls: 'Hanya memasang musik jedag-jedug tanpa efek suara nyata (foley), membuat video terasa palsu dan seperti slide gambar biasa.',
+  },
+];
